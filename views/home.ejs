@@ -7,36 +7,48 @@
             <h1>To-Do List</h1>
         </div>
 
-
         <form class="formbox" action="/" method="POST">
-            <input class="input-box" type="text" name="work" placeholder="Add your work" required>
+            <input class="input-box" type="text" name="task" placeholder="Add your work" required>
             <button type="submit">+</button>
         </form>
 
         <div class="task-box">
-            <% if(toDoList) {%>
 
-                <% toDoList.forEach((to_do, index)=> { %>
-                    <li>
-                        <span class="task-text" id="task-<%= index %>">
-                            <%= index + 1 %>. <%= to_do %>
-                        </span>
-                        <input type="checkbox" onchange="toggleTaskDone('<%= index %>')">
-                        <button onclick="editTask('<%= index %>')">Edit</button>
-                        <form action="/delete/<%= index %>" method="POST" style="display:inline;">
-                            <button type="submit">Delete</button>
+            <% for(let task of works) {%>
+                <div class="eachtask">
+                    <div class="msg-area">
+                        <p class="task-text <%= task.done ? 'done' : '' %>">
+                            Task: <%= task.work %>
+                        </p>
+                    </div>
+
+                    <div class="btn-area">
+                        <form action="/toggle/<%= task._id %>?_method=PATCH" method="POST" style="display:inline;">
+                            <input type="checkbox" onchange="this.form.submit()" class="done-checkbox" <%=task.done
+                                ? 'checked' : '' %>
+                            >
                         </form>
-                    </li>
 
-                    <% }) %>
+                        <form method="GET" action="/<%= task._id %>/edit">
+                            <button type="submit"><i class="bi bi-pencil-square"></i></button>
+                        </form>
+                        
 
-                        <% }else{ %>
+                        <form method="POST" action="/<%= task._id %>?_method=DELETE" style="display:inline;">
+                            <button type="submit"><i class="bi bi-trash3"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <% } %>
 
-                            <% } %>
+
+
         </div>
-        
+
+
         <%- include("includes/footer.ejs") %>
 
-        <script src="/js/script.js"></script>
+            <script src="/js/script.js"></script>
     </body>
+
     </html>

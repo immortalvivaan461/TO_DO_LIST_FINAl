@@ -41,71 +41,93 @@ button {
 }
 
 .task-box {
-    height: 80vh;
+    max-height: 80vh;
     overflow-y: auto;
-    overflow-x: hidden;
     margin-top: 20px;
-    list-style: none;
-    width: clamp(150px, 60vw, 600px);
+    border: 2px solid #ccc;
+    border-radius: 1rem;
+    width: clamp(250px, 90vw, 700px);
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-li {
+.eachtask {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    margin-bottom: 12px;
-    background-color: #fff;
-    gap: 10px;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.2s;
 }
 
-input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
+.eachtask:hover {
+    background-color: #f9f9f9;
 }
 
-li button {
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 1rem;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-li button:hover {
-    background-color: #0056b3;
-}
-
-li form button {
-    background-color: #dc3545;
-}
-
-li form button:hover {
-    background-color: #a71d2a;
+.msg-area {
+    display: flex;
+    align-items: center;
+    width: 70%;
+    word-break: break-word;
 }
 
 
 .task-text {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 90%;
-    line-height: 1.4;
-    word-break: break-word;
+    transition: all 0.2s ease-in-out;
+    font-size: clamp(1rem, 2vw, 1.2rem);
 }
 
 .task-text.done {
     text-decoration: line-through;
     color: gray;
-    opacity: 0.7;
+    opacity: 0.6;
+}
+
+.btn-area {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+button {
+    padding: 0.4rem 0.7rem;
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    border-radius: 0.5rem;
+    border: none;
+    background-color: #20c997;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #17a085;
+}
+
+.formbox button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    margin-left: 10px;
+}
+
+.formbox button:hover {
+    background-color: #0b5ed7;
+}
+
+.formbox{
+    padding-top: 10px;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #20c997;
+    cursor: pointer;
 }
 
 .footer {
@@ -117,6 +139,30 @@ li form button:hover {
     color: black;
 }
 
-.formbox {
-    margin-top: 10px;
+
+.edit-box{
+    height: 100vh;
+}
+.old-task-msg{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    gap: 10px
+}
+#update-task{
+    width: clamp(250px, 80vw, 612px);
+    height: 20vh;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+}
+#edit-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+}
+#update-btn{
+    width: auto;
 }
