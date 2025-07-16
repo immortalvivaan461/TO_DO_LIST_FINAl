@@ -41,7 +41,7 @@ button {
 }
 
 .task-box {
-    max-height: 80vh;
+    height: 80vh;
     overflow-y: auto;
     margin-top: 20px;
     border: 2px solid #ccc;
